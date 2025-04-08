@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AlphaDavid – AI Music Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 120px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: none;
+      resize: none;
+      font-size: 1rem;
+      background-color: #121212;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background-color: #00ffcc;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #00ddaa;
+    }
+
+    .download-link {
+      display: none;
+      margin-top: 1rem;
+      color: #00ffcc;
+      font-size: 1.1rem;
+      text-decoration: underline;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>AlphaDavid AI Music Generator</h1>
+
+  <textarea id="lyrics" placeholder="Enter your lyrics here..."></textarea><br>
+
+  <button onclick="generateMusic()">🎶 Generate Music</button>
+  <a id="downloadLink" class="download-link" href="#" download="alpha-david-track.mp3">⬇️ Download Your Music</a>
+
+  <footer>Powered by Zyphyrr OneX | Louie A. Tabaranza</footer>
+
+  <script>
+    async function generateMusic() {
+      const lyrics = document.getElementById('lyrics').value.trim();
+      if (!lyrics) {
+        alert('Please enter lyrics first!');
+        return;
+      }
+
+      const button = document.querySelector('button');
+      button.textContent = '⏳ Generating...';
+      button.disabled = true;
+
+      try {
+        // Placeholder: Replace with actual backend API call
+        const blob = new Blob(["Fake MP3 data"], { type: 'audio/mpeg' });
+
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.style.display = 'inline-block';
+
+        button.textContent = '✅ Music Generated!';
+      } catch (err) {
+        alert('Error generating music. Try again later.');
+        console.error(err);
+        button.textContent = '🎶 Generate Music';
+      }
+
+      button.disabled = false;
+    }
+  </script>
+</body>
+</html>
